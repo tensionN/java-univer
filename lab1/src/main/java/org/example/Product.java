@@ -1,17 +1,22 @@
 package org.example;
 
-public class Product {
-    int id;
-    Warehouse warehouse;
-    String name;
-    double price;
-    int unitsInStock;
+import java.util.UUID;
 
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
+public class Product {
+    private UUID uuid = UUID.randomUUID();
+    private Warehouse warehouse;
+    private String name;
+    private double price;
+    private int unitsInStock;
+
+    public UUID getId() { return uuid; }
 
     public Warehouse getWarehouse() { return warehouse; }
-    public void setWarehouse(Warehouse warehouse) { this.warehouse = warehouse; }
+    public void setWarehouse(Warehouse warehouse) {
+        this.warehouse.setAddress(warehouse.getAddress());
+        this.warehouse.setCity(warehouse.getCity());
+        this.warehouse.setCountry(warehouse.getCountry());
+    }
 
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
@@ -24,7 +29,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Id: " + id + "; Name: " + name + "; price: " + price + "; Units in stock: " + unitsInStock;
+        return "Id: " + uuid + "; Name: " + name + "; price: " + price + "; Units in stock: " + unitsInStock;
     }
 
     @Override
@@ -38,7 +43,7 @@ public class Product {
         }
 
         Product other = (Product) obj;
-        if (this.id != other.id) {
+        if (this.uuid != other.uuid) {
             return false;
         }
 
