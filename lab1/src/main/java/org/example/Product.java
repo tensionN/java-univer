@@ -13,9 +13,7 @@ public class Product {
 
     public Warehouse getWarehouse() { return warehouse; }
     public void setWarehouse(Warehouse warehouse) {
-        this.warehouse.setAddress(warehouse.getAddress());
-        this.warehouse.setCity(warehouse.getCity());
-        this.warehouse.setCountry(warehouse.getCountry());
+        this.warehouse = warehouse;
     }
 
     public String getName() { return name; }
@@ -29,7 +27,11 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Id: " + uuid + "; Name: " + name + "; price: " + price + "; Units in stock: " + unitsInStock;
+        String productInfo = "Id: " + uuid + "; Name: " + name + "; price: " + price + "; Units in stock: " + unitsInStock;
+
+        String warehouseInfo = warehouse == null ? "No info" : "Address: " + warehouse.getAddress() + "; City: " + warehouse.getCity() + "; Country: " + warehouse.getCountry();
+
+        return productInfo + "\n\t- Warehouse info: " + warehouseInfo;
     }
 
     @Override

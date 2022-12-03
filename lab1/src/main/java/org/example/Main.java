@@ -20,6 +20,8 @@ public class Main {
         System.out.println(apple.toString());
         System.out.println(war1.hashCode());
         System.out.println(apple.hashCode());
+        System.out.println(apple.equals(apple));
+
     }
 
 
