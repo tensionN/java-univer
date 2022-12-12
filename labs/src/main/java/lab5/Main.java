@@ -1,9 +1,10 @@
-package lab3;
+package lab5;
 
 import lab1.Product;
 import lab1.ProductBuilderImpl;
 import lab1.Warehouse;
 import lab1.WarehouseBuilderImpl;
+import lab3.ProductService;
 import lab4.Validate;
 
 import java.util.ArrayList;
@@ -37,7 +38,7 @@ public class Main {
             products.add(val.validateProduct(tomato));
         }
 
-        ProductService pserv = new ProductService(products);
+        StreamProductService pserv = new StreamProductService(products);
 
         System.out.println("Sorted products: ");
         List<Product> res = pserv.sortedProducts();
