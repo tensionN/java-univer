@@ -11,7 +11,7 @@ public class TxtSerialize implements Serializer<Warehouse> {
         try(FileWriter fos = new FileWriter(fileName)){
             fos.write(object.toString());
         }catch (IOException e){
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 

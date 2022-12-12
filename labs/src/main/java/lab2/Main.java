@@ -1,12 +1,9 @@
 package lab2;
 
-
 import lab1.Warehouse;
 import lab1.WarehouseBuilderImpl;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -16,7 +13,8 @@ public class Main {
                 .setCountry("Ukraine")
                 .build();
 
-        Warehouse war2 = new Warehouse();
+        new Warehouse();
+        Warehouse war2;
 
         //--------------TXT--------------------------------
         System.out.println("TXT");

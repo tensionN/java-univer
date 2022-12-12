@@ -6,8 +6,6 @@ import lab1.Warehouse;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.util.List;
-
 
 public class XmlSerialize implements Serializer<Warehouse> {
     private XmlMapper mapper;

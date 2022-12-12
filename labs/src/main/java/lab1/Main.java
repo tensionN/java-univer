@@ -1,7 +1,5 @@
 package lab1;
 
-import lab4.Validate;
-
 public class Main {
     public static void main(String[] args) {
         Warehouse war1 = new WarehouseBuilderImpl()
@@ -10,23 +8,16 @@ public class Main {
                 .setCountry("Ukraine")
                 .build();
 
-
         Product apple = new ProductBuilderImpl()
                 .setName("Apple")
                 .setPrice(5.12)
                 .setUnitsInStock(15)
                 .build();
 
-
         System.out.println(war1.toString());
         System.out.println(apple.toString());
         System.out.println(war1.hashCode());
         System.out.println(apple.hashCode());
         System.out.println(apple.equals(apple));
-
-
-
     }
-
-
 }

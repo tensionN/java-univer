@@ -6,7 +6,6 @@ import lab1.Warehouse;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.util.List;
 
 public class JsonSerialize implements Serializer<Warehouse> {
     private ObjectMapper objectMapper;

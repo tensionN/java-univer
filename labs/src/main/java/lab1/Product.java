@@ -1,8 +1,6 @@
 package lab1;
 
 import javax.validation.constraints.*;
-import java.util.Set;
-
 public class Product {
     @NotNull
     private Warehouse warehouse;
@@ -67,7 +65,6 @@ public class Product {
         if (obj.getClass() != this.getClass()) {
             return false;
         }
-
         return true;
     }
 
@@ -78,7 +75,5 @@ public class Product {
         hash = 53 * hash + this.unitsInStock;
         return hash;
     }
-
-
 }
 
