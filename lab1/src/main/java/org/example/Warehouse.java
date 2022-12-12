@@ -1,13 +1,14 @@
 package org.example;
 
-public class Warehouse {
-    int id;
-    String address;
-    String city;
-    String country;
+import java.util.UUID;
 
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
+public class Warehouse {
+    private UUID uuid = UUID.randomUUID();
+    private String address;
+    private String city;
+    private String country;
+
+    public UUID getId() { return uuid; }
 
     public String getAddress() { return address; }
     public void setAddress(String address) { this.address = address; }
@@ -18,12 +19,10 @@ public class Warehouse {
     public String getCountry() { return country; }
     public void setCountry(String country) { this.country = country; }
 
-    @Override
     public String toString() {
-        return "Id: " + id + "; Address: " + address + "; City: " + city + "; Country: " + country;
+        return "Id: " + uuid + "; Address: " + address + "; City: " + city + "; Country: " + country;
     }
 
-    @Override
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;
@@ -34,14 +33,13 @@ public class Warehouse {
         }
 
         Warehouse other = (Warehouse) obj;
-        if (this.id != other.id) {
+        if (this.uuid != other.uuid) {
             return false;
         }
 
         return true;
     }
 
-    @Override
     public int hashCode() {
         int hash = 3;
         hash = 53 * hash + (this.city != null ? this.city.hashCode() : 0);
@@ -51,37 +49,3 @@ public class Warehouse {
 
 }
 
-interface WarehouseBuilder {
-    WarehouseBuilder setAddress(String address);
-    WarehouseBuilder setCity(String city);
-    WarehouseBuilder setCountry(String country);
-
-    Warehouse build();
-
-}
-
-class WarehouseBuilderImpl implements WarehouseBuilder {
-    Warehouse warehouse = new Warehouse();
-    @Override
-    public WarehouseBuilder setAddress(String address) {
-        warehouse.address = address;
-        return this;
-    }
-
-    @Override
-    public WarehouseBuilder setCity(String city) {
-        warehouse.city = city;
-        return this;
-    }
-
-    @Override
-    public WarehouseBuilder setCountry(String country) {
-        warehouse.country = country;
-        return this;
-    }
-
-    @Override
-    public Warehouse build() {
-        return warehouse;
-    }
-}

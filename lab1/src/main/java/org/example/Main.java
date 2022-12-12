@@ -9,16 +9,19 @@ public class Main {
                 .build();
 
 
-        Product apple = new Product();
-        apple.name = "apple";
-        apple.price = 5.26;
-        apple.unitsInStock = 26;
-        apple.warehouse = war1;
+        Product apple = new ProductBuilderImpl()
+                .setName("Apple")
+                .setPrice(5.12)
+                .setUnitsInStock(15)
+                .build();
+
 
         System.out.println(war1.toString());
         System.out.println(apple.toString());
         System.out.println(war1.hashCode());
         System.out.println(apple.hashCode());
+        System.out.println(apple.equals(apple));
+
     }
 
 
