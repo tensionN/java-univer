@@ -4,7 +4,6 @@ import lab1.Product;
 import lab1.ProductBuilderImpl;
 import lab1.Warehouse;
 import lab1.WarehouseBuilderImpl;
-import lab3.ProductService;
 import lab4.Validate;
 
 import java.util.ArrayList;
