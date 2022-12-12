@@ -1,26 +1,38 @@
 package lab1;
 
-import java.util.UUID;
+import java.util.ArrayList;
 
 public class Warehouse {
-    private UUID uuid = UUID.randomUUID();
     private String address;
     private String city;
     private String country;
 
-    public UUID getId() { return uuid; }
+    public String getAddress() {
+        return address;
+    }
 
-    public String getAddress() { return address; }
-    public void setAddress(String address) { this.address = address; }
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-    public String getCity() { return city; }
-    public void setCity(String city) { this.city = city; }
+    public String getCity() {
+        return city;
+    }
 
-    public String getCountry() { return country; }
-    public void setCountry(String country) { this.country = country; }
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
 
     public String toString() {
-        return "Id: " + uuid + "; Address: " + address + "; City: " + city + "; Country: " + country;
+        return "Address: " + address + "; City: " + city + "; Country: " + country;
     }
 
     public boolean equals(Object obj) {
@@ -29,11 +41,6 @@ public class Warehouse {
         }
 
         if (obj.getClass() != this.getClass()) {
-            return false;
-        }
-
-        Warehouse other = (Warehouse) obj;
-        if (this.uuid != other.uuid) {
             return false;
         }
 
@@ -47,39 +54,27 @@ public class Warehouse {
         return hash;
     }
 
+    public static Warehouse toObject(String string) {
+        String[] str = string.split(";");
+        var values = new ArrayList<String>();
+
+        for (String item : str) {
+            String[] innerItem=item.split(": ");
+            values.add(innerItem[1]);
+        }
+        for (var i : values) {
+            i.trim();
+        }
+
+        var war = new WarehouseBuilderImpl()
+                .setAddress(values.get(0))
+                .setCity(values.get(1))
+                .setCountry(values.get(2))
+                .build();
+
+        return war;
+    }
+
+
 }
 
-interface WarehouseBuilder {
-    WarehouseBuilder setAddress(String address);
-    WarehouseBuilder setCity(String city);
-    WarehouseBuilder setCountry(String country);
-
-    Warehouse build();
-
-}
-
-class WarehouseBuilderImpl implements WarehouseBuilder {
-    Warehouse warehouse = new Warehouse();
-    @Override
-    public WarehouseBuilder setAddress(String address) {
-        warehouse.setAddress(address);
-        return this;
-    }
-
-    @Override
-    public WarehouseBuilder setCity(String city) {
-        warehouse.setCity(city);
-        return this;
-    }
-
-    @Override
-    public WarehouseBuilder setCountry(String country) {
-        warehouse.setCountry(country);
-        return this;
-    }
-
-    @Override
-    public Warehouse build() {
-        return warehouse;
-    }
-}

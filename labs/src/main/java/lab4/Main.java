@@ -1,31 +1,27 @@
-package lab1;
+package lab4;
 
-import lab4.Validate;
+import lab1.Product;
+import lab1.ProductBuilderImpl;
+import lab1.Warehouse;
+import lab1.WarehouseBuilderImpl;
 
 public class Main {
     public static void main(String[] args) {
         Warehouse war1 = new WarehouseBuilderImpl()
-                .setAddress("Bukovinska 3")
+                .setAddress("Bukovinska_3")
                 .setCity("Chernivtsi")
                 .setCountry("Ukraine")
                 .build();
-
 
         Product apple = new ProductBuilderImpl()
                 .setName("Apple")
                 .setPrice(5.12)
                 .setUnitsInStock(15)
+                .setWarehouse(war1)
                 .build();
 
-
-        System.out.println(war1.toString());
-        System.out.println(apple.toString());
-        System.out.println(war1.hashCode());
-        System.out.println(apple.hashCode());
-        System.out.println(apple.equals(apple));
-
-
-
+        Validate val = new Validate();
+        val.validateProduct(apple);
     }
 
 

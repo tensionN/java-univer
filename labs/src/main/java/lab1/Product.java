@@ -1,33 +1,57 @@
 package lab1;
 
-import java.util.UUID;
+import javax.validation.constraints.*;
+import java.util.Set;
 
 public class Product {
-    private UUID uuid = UUID.randomUUID();
+    @NotNull
     private Warehouse warehouse;
+    @Size(min = 2, max = 24, message = "Name must be between 2 and 24 symbols")
     private String name;
+
+    @DecimalMin(value = "0.01", message = "Must be not lower then 0.01")
+    @DecimalMax(value = "1000", message = "Must be not higher then 1000")
     private double price;
+
+    @Min(value = 0, message = "Must be not lower then 0")
+    @Max(value = 10000, message = "Must be not higher then 10000")
     private int unitsInStock;
 
-    public UUID getId() { return uuid; }
+    public Warehouse getWarehouse() {
+        return warehouse;
+    }
 
-    public Warehouse getWarehouse() { return warehouse; }
     public void setWarehouse(Warehouse warehouse) {
         this.warehouse = warehouse;
     }
 
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+    public String getName() {
+        return name;
+    }
 
-    public double getPrice() { return price; }
-    public void setPrice(double price) { this.price = price; }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public int getUnitsInStock() { return unitsInStock; }
-    public void setUnitsInStock(int unitsInStock) { this.unitsInStock = unitsInStock; }
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public int getUnitsInStock() {
+        return unitsInStock;
+    }
+
+    public void setUnitsInStock(int unitsInStock) {
+        this.unitsInStock = unitsInStock;
+    }
 
     @Override
     public String toString() {
-        String productInfo = "Id: " + uuid + "; Name: " + name + "; price: " + price + "; Units in stock: " + unitsInStock;
+        String productInfo = "Name: " + name + "; price: " + price + "; Units in stock: " + unitsInStock;
 
         String warehouseInfo = warehouse == null ? "No info" : "Address: " + warehouse.getAddress() + "; City: " + warehouse.getCity() + "; Country: " + warehouse.getCountry();
 
@@ -44,11 +68,6 @@ public class Product {
             return false;
         }
 
-        Product other = (Product) obj;
-        if (this.uuid != other.uuid) {
-            return false;
-        }
-
         return true;
     }
 
@@ -59,46 +78,7 @@ public class Product {
         hash = 53 * hash + this.unitsInStock;
         return hash;
     }
-}
 
-interface ProductBuilder {
-    ProductBuilder setName(String name);
-    ProductBuilder setPrice(double price);
-    ProductBuilder setUnitsInStock(int unitsInStock);
-    ProductBuilder setWarehouse(Warehouse warehouse);
-
-    Product build();
 
 }
 
-class ProductBuilderImpl implements ProductBuilder {
-    Product product = new Product();
-    @Override
-    public ProductBuilder setName(String name) {
-        product.setName(name);
-        return this;
-    }
-
-    @Override
-    public ProductBuilder setPrice(double price) {
-        product.setPrice(price);
-        return this;
-    }
-
-    @Override
-    public ProductBuilder setUnitsInStock(int unitsInStock) {
-        product.setUnitsInStock(unitsInStock);
-        return this;
-    }
-
-    @Override
-    public ProductBuilder setWarehouse(Warehouse warehouse) {
-        product.setWarehouse(warehouse);
-        return this;
-    }
-
-    @Override
-    public Product build() {
-        return product;
-    }
-}
