@@ -19,12 +19,10 @@ public class Warehouse {
     public String getCountry() { return country; }
     public void setCountry(String country) { this.country = country; }
 
-    @Override
     public String toString() {
         return "Id: " + uuid + "; Address: " + address + "; City: " + city + "; Country: " + country;
     }
 
-    @Override
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;
@@ -42,7 +40,6 @@ public class Warehouse {
         return true;
     }
 
-    @Override
     public int hashCode() {
         int hash = 3;
         hash = 53 * hash + (this.city != null ? this.city.hashCode() : 0);
