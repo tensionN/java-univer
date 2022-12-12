@@ -3,14 +3,13 @@ package lab5;
 import lab1.Product;
 import lab3.ProductComparator;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class StreamProductService {
+public class StreamProductCollections {
     private List<Product> products;
 
-    public StreamProductService(List<Product> products) {
+    public StreamProductCollections(List<Product> products) {
         this.products = products;
     }
 

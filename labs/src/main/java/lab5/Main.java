@@ -37,7 +37,7 @@ public class Main {
             products.add(val.validateProduct(tomato));
         }
 
-        StreamProductService pserv = new StreamProductService(products);
+        StreamProductCollections pserv = new StreamProductCollections(products);
 
         System.out.println("Sorted products: ");
         List<Product> res = pserv.sortedProducts();

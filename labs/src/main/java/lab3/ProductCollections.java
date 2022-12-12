@@ -5,10 +5,10 @@ import lab1.Product;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductService {
+public class ProductCollections {
     private List<Product> products;
 
-    public ProductService(List<Product> products) {
+    public ProductCollections(List<Product> products) {
         this.products = products;
     }
 

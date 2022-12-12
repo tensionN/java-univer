@@ -37,7 +37,7 @@ public class Main {
             products.add(val.validateProduct(tomato));
         }
 
-        ProductService pserv = new ProductService(products);
+        ProductCollections pserv = new ProductCollections(products);
 
         System.out.println("Sorted products: ");
         List<Product> res = pserv.sortedProducts();
