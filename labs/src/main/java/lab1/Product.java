@@ -1,7 +1,7 @@
 package lab1;
 
 import javax.validation.constraints.*;
-public class Product {
+public class Product implements Comparable<Product> {
     @NotNull
     private Warehouse warehouse;
     @Size(min = 2, max = 24, message = "Name must be between 2 and 24 symbols")
@@ -74,6 +74,11 @@ public class Product {
         hash = 53 * hash + (this.name != null ? this.name.hashCode() : 0);
         hash = 53 * hash + this.unitsInStock;
         return hash;
+    }
+
+    @Override
+    public int compareTo(@NotNull Product o) {
+        return name.compareTo(o.getName());
     }
 }
 
