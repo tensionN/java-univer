@@ -25,6 +25,5 @@ public class StreamProductCollections {
 
     public List<Product> priceHigherThan(double price){
         return products.stream().filter(product -> product.getPrice() > price).collect(Collectors.toList());
-
     }
 }

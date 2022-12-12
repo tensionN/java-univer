@@ -6,6 +6,5 @@ public interface WarehouseBuilder {
     WarehouseBuilder setCountry(String country);
 
     Warehouse build();
-
 }
 

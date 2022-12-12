@@ -74,7 +74,5 @@ public class Warehouse {
 
         return war;
     }
-
-
 }
 

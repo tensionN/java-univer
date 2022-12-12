@@ -23,6 +23,4 @@ public class Main {
         Validate val = new Validate();
         val.validateProduct(apple);
     }
-
-
 }

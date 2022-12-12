@@ -54,6 +54,5 @@ public class Main {
         for (var i : priceHigherThan) {
             System.out.println(i.toString());
         }
-
     }
 }
